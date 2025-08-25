@@ -17,18 +17,15 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
   ];
 
   return (
-    <footer className="bg-primary text-text-secondary py-12">
+    <footer className="bg-background text-text-secondary py-12 border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
             <h2 className="text-xl font-bold text-text-primary tracking-wider">
-              CORNERSTONE
+              CORNERSTONE <span className="text-accent">ETHMAN</span>
             </h2>
-            <h3 className="text-sm font-semibold text-accent tracking-widest mb-4">
-              ETHMAN
-            </h3>
-            <p className="text-sm">
+            <p className="text-sm mt-4">
               Driving profitable and purposeful investments across key global sectors.
             </p>
           </div>
@@ -69,7 +66,7 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
             <p className="text-sm">Social media links coming soon.</p>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-secondary text-center text-xs">
+        <div className="mt-8 pt-8 border-t border-border text-center text-xs">
           <p>&copy; {new Date().getFullYear()} Cornerstone Ethman Investment Holding. All Rights Reserved.</p>
         </div>
       </div>

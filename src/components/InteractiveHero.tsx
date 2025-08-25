@@ -2,40 +2,31 @@ import { motion } from 'framer-motion';
 
 const InteractiveHero: React.FC = () => {
   return (
-    <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
-      {/* Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute z-0 w-auto min-w-full min-h-full max-w-none"
-        poster="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2020&auto=format&fit=crop"
-      >
-        <source src="https://videos.pexels.com/video-files/3254011/3254011-hd_1920_1080_25fps.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black opacity-60 z-10"></div>
-
-      {/* Content */}
-      <div className="relative z-20 px-4">
-        <motion.h1
-          className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-text-primary uppercase tracking-wider"
+    <section className="relative h-[80vh] flex items-center justify-center text-center overflow-hidden">
+      <div className="relative z-20 px-4 max-w-4xl mx-auto">
+        <motion.h2
+          className="text-2xl md:text-3xl font-light text-gold uppercase tracking-widest"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          CORNERSTONE ETHMAN
+          His Excellency: Forging a New Era of Global Investment.
+        </motion.h2>
+        <motion.h1
+          className="mt-4 text-4xl md:text-6xl lg:text-7xl font-extrabold text-text-primary uppercase tracking-tight"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+        >
+          CORNERSTONE ETHMAN INVESTMENT HOLDING
         </motion.h1>
         <motion.p
-          className="mt-4 text-lg md:text-2xl font-light text-accent tracking-widest"
+          className="mt-6 text-lg md:text-xl font-light text-gold"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+          transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
         >
-          Strategic Investment & Management Excellence
+          Delivers operational excellence and sustainable value by transforming insights into Strategic Investments & Management Excellence across the world.
         </motion.p>
       </div>
     </section>

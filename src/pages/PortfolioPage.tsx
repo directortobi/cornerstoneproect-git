@@ -12,7 +12,7 @@ export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-background text-text-primary">
       {/* Hero Section */}
-      <section className="relative bg-primary py-24 sm:py-32 text-white text-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2070&auto=format&fit=crop')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="relative bg-primary py-32 sm:py-40 text-white text-center">
         <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h1
@@ -21,7 +21,7 @@ export default function PortfolioPage() {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-5xl font-bold mb-4"
           >
-            Ranch Agro-Pastoral Ethman (RAE)
+            Ranch Agro-Pastoral <span className="text-accent">Ethman (RAE)</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
@@ -79,7 +79,7 @@ export default function PortfolioPage() {
             {areas.map((area, index) => (
               <motion.div
                 key={area.title}
-                className="bg-secondary p-6 text-center rounded-lg"
+                className="bg-secondary p-6 text-center rounded-lg border border-border hover:border-accent"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

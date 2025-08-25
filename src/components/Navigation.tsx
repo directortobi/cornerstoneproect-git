@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Languages, ChevronDown } from 'lucide-react';
 
 type Page = 'home' | 'about' | 'services' | 'portfolio' | 'contact';
 
@@ -11,6 +11,7 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
 
   const navItems = [
     { id: 'home' as Page, label: 'Home' },
@@ -20,9 +21,16 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
     { id: 'contact' as Page, label: 'Contact' },
   ];
 
+  const languages = [
+    { code: 'EN', label: 'English' },
+    { code: 'FR', label: 'Français' },
+    { code: 'AR', label: 'العربية' },
+  ];
+  const [selectedLang, setSelectedLang] = useState(languages[0]);
+
   return (
     <motion.nav 
-      className="bg-primary/80 backdrop-blur-md sticky top-0 z-50 shadow-lg shadow-black/20"
+      className="bg-background/80 backdrop-blur-lg sticky top-0 z-50 border-b border-border"
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -36,28 +44,61 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
             whileHover={{ scale: 1.05 }}
           >
             <h2 className="text-xl font-bold text-text-primary tracking-wider">
-              CORNERSTONE
+              CORNERSTONE <span className="text-accent">ETHMAN</span>
             </h2>
-            <h3 className="text-sm font-semibold text-accent tracking-widest">
-              ETHMAN
-            </h3>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
+            <div className="flex items-baseline space-x-8">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => setCurrentPage(item.id)}
-                  className="relative px-3 py-2 text-sm font-medium transition-colors duration-300 group"
+                  className="relative px-1 py-2 text-sm font-medium transition-colors duration-300"
                 >
-                  <span className={currentPage === item.id ? 'text-accent' : 'text-text-secondary group-hover:text-text-primary'}>
+                  <span className={currentPage === item.id ? 'text-accent' : 'text-text-secondary hover:text-text-primary'}>
                     {item.label}
                   </span>
-                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-accent transform transition-transform duration-300 ease-out ${currentPage === item.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
                 </button>
               ))}
+            </div>
+
+            {/* Language Switcher */}
+            <div className="relative">
+              <button
+                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+                className="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-300"
+              >
+                <Languages size={16} className="mr-2" />
+                <span>{selectedLang.code}</span>
+                <ChevronDown size={16} className={`ml-1 transition-transform ${isLangMenuOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isLangMenuOpen && (
+                <motion.div
+                  className="absolute right-0 mt-2 w-32 bg-secondary rounded-md shadow-lg border border-border"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                >
+                  <ul className="py-1">
+                    {languages.map(lang => (
+                      <li key={lang.code}>
+                        <button
+                          onClick={() => {
+                            setSelectedLang(lang);
+                            setIsLangMenuOpen(false);
+                            // NOTE: Add i18n logic here in a real implementation
+                          }}
+                          className="w-full text-left px-4 py-2 text-sm text-text-secondary hover:bg-primary hover:text-text-primary"
+                        >
+                          {lang.label}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )}
             </div>
           </div>
 
@@ -76,10 +117,10 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
         <motion.div 
-          className="md:hidden bg-primary"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          className="md:hidden bg-background border-t border-border"
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
         >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
@@ -89,7 +130,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
                   setCurrentPage(item.id);
                   setIsMobileMenuOpen(false);
                 }}
-                className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors duration-200 ${
+                className={`block px-3 py-3 rounded-md text-base font-medium w-full text-left transition-colors duration-200 ${
                   currentPage === item.id
                     ? 'text-accent bg-secondary'
                     : 'text-text-secondary hover:text-text-primary hover:bg-secondary'
@@ -98,6 +139,28 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
                 {item.label}
               </button>
             ))}
+             {/* Mobile Language Switcher */}
+             <div className="px-3 pt-4 pb-2 border-t border-border">
+                <h3 className="text-xs font-semibold text-text-secondary uppercase tracking-wider mb-2">Language</h3>
+                <div className="space-y-1">
+                {languages.map(lang => (
+                    <button
+                      key={lang.code}
+                      onClick={() => {
+                        setSelectedLang(lang);
+                        // NOTE: Add i18n logic here
+                      }}
+                      className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors duration-200 ${
+                        selectedLang.code === lang.code
+                          ? 'text-accent bg-secondary'
+                          : 'text-text-secondary hover:text-text-primary hover:bg-secondary'
+                      }`}
+                    >
+                      {lang.label}
+                    </button>
+                ))}
+                </div>
+            </div>
           </div>
         </motion.div>
       )}

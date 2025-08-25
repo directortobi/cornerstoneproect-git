@@ -2,7 +2,7 @@ import InteractiveHero from '../components/InteractiveHero';
 import { motion } from 'framer-motion';
 import { Building2, Leaf, Zap, TrendingUp, Globe } from 'lucide-react';
 
-const HomePage: React.FC = () => {
+const HomePage: React.FC<{setCurrentPage: (page: 'contact') => void}> = () => {
   const services = [
     {
       icon: Building2,
@@ -57,7 +57,7 @@ const HomePage: React.FC = () => {
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                className="bg-secondary p-8 rounded-lg border border-transparent hover:border-accent transition-colors duration-300 shadow-lg"
+                className="bg-secondary p-8 rounded-lg border border-border hover:border-accent transition-colors duration-300 shadow-lg"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
