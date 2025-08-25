@@ -43,9 +43,10 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
             onClick={() => setCurrentPage('home')}
             whileHover={{ scale: 1.05 }}
           >
-            <h2 className="text-xl font-bold text-text-primary tracking-wider">
-              CORNERSTONE <span className="text-accent">ETHMAN</span>
-            </h2>
+            <div className="flex items-center space-x-3">
+              <img src="https://i.ibb.co/9gX4g2C/cie-logo.png" alt="CIE Holding Logo" className="h-10 w-auto" />
+              <span className="text-xl font-bold text-brand tracking-wider">CIE Holding</span>
+            </div>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -57,7 +58,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
                   onClick={() => setCurrentPage(item.id)}
                   className="relative px-1 py-2 text-sm font-medium transition-colors duration-300"
                 >
-                  <span className={currentPage === item.id ? 'text-accent' : 'text-text-secondary hover:text-text-primary'}>
+                  <span className={currentPage === item.id ? 'text-brand font-semibold' : 'text-text-secondary hover:text-brand'}>
                     {item.label}
                   </span>
                 </button>
@@ -68,7 +69,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
             <div className="relative">
               <button
                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                className="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-300"
+                className="flex items-center px-3 py-2 text-sm font-medium text-text-secondary hover:text-brand transition-colors duration-300"
               >
                 <Languages size={16} className="mr-2" />
                 <span>{selectedLang.code}</span>
@@ -76,7 +77,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
               </button>
               {isLangMenuOpen && (
                 <motion.div
-                  className="absolute right-0 mt-2 w-32 bg-secondary rounded-md shadow-lg border border-border"
+                  className="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg border border-border"
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
@@ -88,9 +89,8 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
                           onClick={() => {
                             setSelectedLang(lang);
                             setIsLangMenuOpen(false);
-                            // NOTE: Add i18n logic here in a real implementation
                           }}
-                          className="w-full text-left px-4 py-2 text-sm text-text-secondary hover:bg-primary hover:text-text-primary"
+                          className="w-full text-left px-4 py-2 text-sm text-text-secondary hover:bg-primary hover:text-brand"
                         >
                           {lang.label}
                         </button>
@@ -106,7 +106,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-text-secondary hover:text-text-primary p-2"
+              className="text-text-secondary hover:text-brand p-2"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -132,14 +132,13 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
                 }}
                 className={`block px-3 py-3 rounded-md text-base font-medium w-full text-left transition-colors duration-200 ${
                   currentPage === item.id
-                    ? 'text-accent bg-secondary'
-                    : 'text-text-secondary hover:text-text-primary hover:bg-secondary'
+                    ? 'text-brand bg-secondary'
+                    : 'text-text-secondary hover:text-brand hover:bg-secondary'
                 }`}
               >
                 {item.label}
               </button>
             ))}
-             {/* Mobile Language Switcher */}
              <div className="px-3 pt-4 pb-2 border-t border-border">
                 <h3 className="text-xs font-semibold text-text-secondary uppercase tracking-wider mb-2">Language</h3>
                 <div className="space-y-1">
@@ -148,12 +147,11 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
                       key={lang.code}
                       onClick={() => {
                         setSelectedLang(lang);
-                        // NOTE: Add i18n logic here
                       }}
                       className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors duration-200 ${
                         selectedLang.code === lang.code
-                          ? 'text-accent bg-secondary'
-                          : 'text-text-secondary hover:text-text-primary hover:bg-secondary'
+                          ? 'text-brand bg-secondary'
+                          : 'text-text-secondary hover:text-brand hover:bg-secondary'
                       }`}
                     >
                       {lang.label}

@@ -12,14 +12,13 @@ export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-background text-text-primary">
       {/* Hero Section */}
-      <section className="relative bg-primary py-32 sm:py-40 text-white text-center">
-        <div className="absolute inset-0 bg-black/70"></div>
+      <section className="relative bg-primary py-32 sm:py-40 text-center">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h1
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-4xl md:text-5xl font-bold mb-4 text-brand"
           >
             Ranch Agro-Pastoral <span className="text-accent">Ethman (RAE)</span>
           </motion.h1>
@@ -30,7 +29,7 @@ export default function PortfolioPage() {
             className="max-w-3xl mx-auto text-lg md:text-xl text-text-secondary"
           >
             A visionary <strong>118,000-hectare</strong> agro-pastoral project in the{" "}
-            <span className="font-semibold text-accent">
+            <span className="font-semibold text-brand">
               Central African Republic
             </span>.
           </motion.p>
@@ -54,7 +53,7 @@ export default function PortfolioPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="text-3xl font-bold mb-4 text-text-primary">About the Project</h2>
+          <h2 className="text-3xl font-bold mb-4 text-brand">About the Project</h2>
           <p className="text-text-secondary leading-relaxed">
             Ranch Agro-Pastoral Ethman (RAE) is designed as a fully integrated
             agro-pastoral ecosystem, bringing together{" "}
@@ -79,13 +78,13 @@ export default function PortfolioPage() {
             {areas.map((area, index) => (
               <motion.div
                 key={area.title}
-                className="bg-secondary p-6 text-center rounded-lg border border-border hover:border-accent"
+                className="bg-white p-6 text-center rounded-lg border border-border hover:border-accent hover:shadow-xl transition-all"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <area.icon className="w-12 h-12 mx-auto mb-4 text-accent" />
+                <area.icon className="w-12 h-12 mx-auto mb-4 text-brand" />
                 <h3 className="text-xl font-semibold mb-2 text-text-primary">{area.title}</h3>
                 <p className="text-text-secondary">{area.description}</p>
               </motion.div>
@@ -102,7 +101,7 @@ export default function PortfolioPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="text-3xl font-bold mb-8 text-text-primary">Strategic Impact</h2>
+          <h2 className="text-3xl font-bold mb-8 text-brand">Strategic Impact</h2>
           <p className="text-text-secondary max-w-3xl mx-auto text-lg">
             RAE is more than a farm — it is a{" "}
             <span className="text-accent font-semibold">

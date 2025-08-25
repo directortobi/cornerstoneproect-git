@@ -39,14 +39,13 @@ const ContactPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative bg-primary py-32 sm:py-40 text-white text-center">
-        <div className="absolute inset-0 bg-black/70"></div>
+      <section className="relative bg-primary py-32 sm:py-40 text-center">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h1
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-4xl md:text-5xl font-bold mb-4 text-brand"
           >
             Contact <span className="text-accent">Us</span>
           </motion.h1>
@@ -78,7 +77,7 @@ const ContactPage: React.FC = () => {
               <div className="space-y-8">
                 {contactInfo.map((info, index) => (
                   <motion.div key={index} className="flex items-start" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: index * 0.1 }}>
-                    <div className="flex-shrink-0 w-12 h-12 bg-secondary rounded-lg flex items-center justify-center mr-4 border border-border"><info.icon className="text-accent" size={24} /></div>
+                    <div className="flex-shrink-0 w-12 h-12 bg-secondary rounded-lg flex items-center justify-center mr-4 border border-border"><info.icon className="text-brand" size={24} /></div>
                     <div>
                       <h3 className="text-xl font-semibold text-text-primary mb-1">{info.title}</h3>
                       <p className="text-text-primary font-medium">{info.content}</p>
@@ -108,29 +107,29 @@ const ContactPage: React.FC = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-text-secondary mb-2">Full Name *</label>
-                      <input type="text" name="name" required value={formData.name} onChange={handleChange} className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-colors text-text-primary" placeholder="John Doe" />
+                      <input type="text" name="name" required value={formData.name} onChange={handleChange} className="w-full px-4 py-3 bg-white border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent transition-colors text-text-primary" placeholder="John Doe" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-text-secondary mb-2">Email Address *</label>
-                      <input type="email" name="email" required value={formData.email} onChange={handleChange} className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-colors text-text-primary" placeholder="john@example.com" />
+                      <input type="email" name="email" required value={formData.email} onChange={handleChange} className="w-full px-4 py-3 bg-white border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent transition-colors text-text-primary" placeholder="john@example.com" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-text-secondary mb-2">Company</label>
-                    <input type="text" name="company" value={formData.company} onChange={handleChange} className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-colors text-text-primary" placeholder="Your Company Name" />
+                    <input type="text" name="company" value={formData.company} onChange={handleChange} className="w-full px-4 py-3 bg-white border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent transition-colors text-text-primary" placeholder="Your Company Name" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-text-secondary mb-2">Service of Interest</label>
-                    <select name="service" value={formData.service} onChange={handleChange} className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-colors text-text-primary">
+                    <select name="service" value={formData.service} onChange={handleChange} className="w-full px-4 py-3 bg-white border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent transition-colors text-text-primary">
                       <option value="">Select a service...</option>
                       {services.map((service, index) => (<option key={index} value={service}>{service}</option>))}
                     </select>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-text-secondary mb-2">Message *</label>
-                    <textarea name="message" required rows={5} value={formData.message} onChange={handleChange} className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent resize-none text-text-primary" placeholder="Tell us about your project..." />
+                    <textarea name="message" required rows={5} value={formData.message} onChange={handleChange} className="w-full px-4 py-3 bg-white border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent resize-none text-text-primary" placeholder="Tell us about your project..." />
                   </div>
-                  <button type="submit" className="w-full inline-flex items-center justify-center px-6 py-3 bg-accent hover:bg-accent-hover text-background font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                  <button type="submit" className="w-full inline-flex items-center justify-center px-6 py-3 bg-brand hover:bg-brand-hover text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
                     Send Message <Send className="ml-2" size={18} />
                   </button>
                 </form>

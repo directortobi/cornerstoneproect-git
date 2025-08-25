@@ -6,17 +6,16 @@ const AboutPage: React.FC = () => {
     <div className="min-h-screen bg-background">
       {/* Header Section */}
       <section
-        className="relative bg-primary py-32 sm:py-40 text-white text-center"
+        className="relative bg-primary py-32 sm:py-40 text-center"
       >
-        <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h1
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-4xl md:text-5xl font-bold mb-4 text-brand"
           >
-            About <span className="text-accent">Cornerstone Ethman</span>
+            About <span className="text-accent">CIE Holding</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -37,10 +36,10 @@ const AboutPage: React.FC = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="prose prose-lg max-w-none text-text-secondary space-y-6 prose-strong:text-text-primary prose-headings:text-text-primary"
+            className="prose prose-lg max-w-none text-text-secondary space-y-6 prose-strong:text-text-primary prose-headings:text-brand"
           >
             <p>
-              Cornerstone Ethman Investment Holding (CEI Holding) is a visionary
+              Cornerstone Ethman Investment Holding (CIE Holding) is a visionary
               investment firm, headquartered in GCC with a global mandate.
               Operating as a Limited Liability Company (LLC) within the dynamic
               framework of the Dubai Integrated Economic Zones, we are perfectly
@@ -126,10 +125,10 @@ const AboutPage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-secondary p-6 rounded-lg text-center border border-border hover:border-accent"
+                className="bg-white p-6 rounded-lg text-center border border-border hover:border-accent hover:shadow-xl transition-all"
               >
-                <div className="inline-flex p-4 bg-primary rounded-full mb-4">
-                  <feature.icon className="h-8 w-8 text-accent" />
+                <div className="inline-flex p-4 bg-secondary rounded-full mb-4">
+                  <feature.icon className="h-8 w-8 text-brand" />
                 </div>
                 <h3 className="text-xl font-semibold text-text-primary mb-3">
                   {feature.title}
