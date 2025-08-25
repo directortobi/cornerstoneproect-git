@@ -2,7 +2,7 @@ const contactInfo = [
   { 
     icon: Mail, 
     title: 'Email', 
-    content: 'info@cornerstoneethmia.com', 
+    content: Info@cei.holding, 
     description: 'Send us an email anytime' 
   },
   { 
