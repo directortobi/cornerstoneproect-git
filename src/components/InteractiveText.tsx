@@ -96,7 +96,7 @@ const vibrantColors = [
 ];
 
 const InteractiveText: React.FC<InteractiveTextProps> = ({ text, className = '' }) => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [, setHoveredIndex] = useState<number | null>(null);
   const [letterStyles, setLetterStyles] = useState<{ [key: number]: { font: string; color: string } }>({});
 
   const handleLetterHover = (index: number) => {

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Navigation from './components/Navigation';
-// import BlobCursor from './components/BlobCursor'; // Commenting out to fix timer issue
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
 import PortfolioPage from './pages/PortfolioPage';
+import Footer from './components/Footer';
 
 type Page = 'home' | 'about' | 'services' | 'portfolio' | 'contact';
 
@@ -31,17 +31,18 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* <BlobCursor /> */} {/* Disabling BlobCursor to prevent environment-specific timer crashes */}
+    <div className="min-h-screen bg-background text-text-primary">
       <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <motion.main
         key={currentPage}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
         {renderPage()}
       </motion.main>
+      <Footer setCurrentPage={setCurrentPage} />
     </div>
   );
 }

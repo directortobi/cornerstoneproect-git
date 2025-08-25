@@ -22,7 +22,6 @@ const ServicesPage: React.FC = () => {
         they need to scale. We don't just invest; we partner, offering hands-on management 
         and institutional support to ensure long-term success.
       `,
-      color: "bg-blue-100 text-blue-900"
     },
     {
       id: "SECT-002",
@@ -37,7 +36,6 @@ const ServicesPage: React.FC = () => {
         responsible exploitation of marine resources. Our goal is to foster a more secure and 
         efficient global food ecosystem.
       `,
-      color: "bg-green-100 text-green-900"
     },
     {
       id: "SECT-003",
@@ -52,7 +50,6 @@ const ServicesPage: React.FC = () => {
         that contribute to the global energy landscape while adhering to best practices in 
         operational efficiency and governance.
       `,
-      color: "bg-yellow-100 text-yellow-900"
     },
     {
       id: "SECT-004",
@@ -66,7 +63,6 @@ const ServicesPage: React.FC = () => {
         sales and purchase contracts in exchange for a commission or fee. Our deep market 
         knowledge and extensive network ensure seamless and successful transactions for our clients.
       `,
-      color: "bg-purple-100 text-purple-900"
     },
     {
       id: "SECT-005",
@@ -81,63 +77,66 @@ const ServicesPage: React.FC = () => {
         strategic plans. Our guidance empowers businesses to overcome challenges, innovate 
         work procedures, and achieve their full potential.
       `,
-      color: "bg-red-100 text-red-900"
     },
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Header Section */}
-      <section className="bg-gradient-to-r from-blue-900 to-green-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
+      <section className="relative bg-primary py-24 sm:py-32 text-white text-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=2070&auto=format&fit=crop')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h1
+            initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="text-4xl md:text-5xl font-bold mb-4"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Investment Sectors</h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              At CEI Holding, we strategically deploy capital into key sectors that drive global economic 
-              progress and offer significant growth potential. Our expertise allows us to identify and 
-              cultivate opportunities that create lasting value for our partners and the communities they serve.
-            </p>
-          </motion.div>
+            Our Investment Sectors
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-lg text-text-secondary max-w-3xl mx-auto"
+          >
+            At CEI Holding, we strategically deploy capital into key sectors that drive global economic 
+            progress and offer significant growth potential.
+          </motion.p>
         </div>
       </section>
 
       {/* Services Grid */}
       <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-10 md:grid-cols-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-white rounded-xl shadow-lg p-8 border border-gray-100"
+              className="bg-primary rounded-lg shadow-lg p-8 flex flex-col md:flex-row items-start gap-8"
             >
-              <div className="flex items-start space-x-6">
-                <div className={`inline-flex p-4 rounded-lg ${service.color} flex-shrink-0`}>
-                  <service.icon className="h-10 w-10" />
+              <div className="flex-shrink-0">
+                <service.icon className="h-12 w-12 text-accent" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold text-text-primary mb-3">{service.title}</h3>
+                <div className="flex items-center space-x-4 mb-4">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-secondary text-text-secondary">
+                    {service.id}
+                  </span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-secondary text-text-secondary">
+                    {service.code}
+                  </span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-accent/20 text-accent">
+                    {service.type}
+                  </span>
                 </div>
-                <div className="flex-1">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
-                      {service.id}
-                    </span>
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
-                      {service.code}
-                    </span>
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                      {service.type}
-                    </span>
-                  </div>
-                  <h3 className="text-2xl font-bold text-blue-900 mb-4">{service.title}</h3>
-                  <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                    {service.description}
-                  </p>
-                </div>
+                <p className="text-text-secondary leading-relaxed whitespace-pre-line">
+                  {service.description}
+                </p>
               </div>
             </motion.div>
           ))}
