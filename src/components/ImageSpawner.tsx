@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface SpawnedImage {
@@ -9,6 +9,10 @@ interface SpawnedImage {
   width: number;
   height: number;
   rotation: number;
+}
+
+interface ImageSpawnerProps {
+  children: React.ReactNode;
 }
 
 const unsplashImages = [
@@ -28,15 +32,11 @@ const unsplashImages = [
   'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=300&h=200&fit=crop',
   'https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?w=300&h=200&fit=crop',
   'https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=300&h=200&fit=crop',
-	'https://images.unsplash.com/photo-1602576666092-bf6447a729fc?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-	'https://images.unsplash.com/photo-1642132652806-8aa09801c2ab?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-	'https://images.unsplash.com/photo-1690369519543-c81a2121f740?q=80&w=327&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-	'https://images.unsplash.com/photo-1547119957-637f8679db1e?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1602576666092-bf6447a729fc?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1642132652806-8aa09801c2ab?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1690369519543-c81a2121f740?q=80&w=327&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1547119957-637f8679db1e?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 ];
-
-interface ImageSpawnerProps {
-  children: React.ReactNode;
-}
 
 const ImageSpawner: React.FC<ImageSpawnerProps> = ({ children }) => {
   const [spawnedImages, setSpawnedImages] = useState<SpawnedImage[]>([]);
@@ -62,12 +62,11 @@ const ImageSpawner: React.FC<ImageSpawnerProps> = ({ children }) => {
     };
 
     setSpawnedImages(prev => [...prev, newImage]);
-    // Images now stay permanently until reset button is clicked
   }, []);
 
-  const resetImages = () => {
+  const resetImages = useCallback(() => {
     setSpawnedImages([]);
-  };
+  }, []);
 
   return (
     <div 
@@ -85,7 +84,7 @@ const ImageSpawner: React.FC<ImageSpawnerProps> = ({ children }) => {
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 
                      border-2 border-gray-800 px-6 py-2 rounded-full 
                      hover:bg-gray-800 hover:text-white transition-colors duration-300
-                     font-mono text-sm tracking-wider z-50 cursor-pointer"
+                     font-mono text-sm tracking-wider z-50"
         >
           ↻ RESET ({spawnedImages.length})
         </button>
@@ -96,13 +95,14 @@ const ImageSpawner: React.FC<ImageSpawnerProps> = ({ children }) => {
           <motion.img
             key={image.id}
             src={image.src}
-            className="spawned-image"
+            className="absolute pointer-events-auto rounded-lg shadow-lg"
             style={{
               left: image.x,
               top: image.y,
               width: image.width,
               height: image.height,
-              transform: `rotate(${image.rotation}deg)`
+              transform: `rotate(${image.rotation}deg)`,
+              objectFit: 'cover'
             }}
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}

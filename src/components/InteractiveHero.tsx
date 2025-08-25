@@ -1,7 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import InteractiveText from './InteractiveText';
-import ImageSpawner from './ImageSpawner';
 
 const InteractiveHero: React.FC = () => {
   const [spawnedImages, setSpawnedImages] = useState<Array<{
@@ -12,15 +11,6 @@ const InteractiveHero: React.FC = () => {
     rotation: number;
   }>>([]);
   const heroRef = useRef<HTMLDivElement>(null);
-  const timersRef = useRef<Record<string, number>>({});
-
-  // Add useEffect to clean up timers when the component unmounts
-  useEffect(() => {
-    return () => {
-      // Clear all active timers to prevent memory leaks
-      Object.values(timersRef.current).forEach(clearTimeout);
-    };
-  }, []);
 
   const handleCanvasClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!heroRef.current) return;
@@ -59,15 +49,6 @@ const InteractiveHero: React.FC = () => {
     };
     
     setSpawnedImages(prev => [...prev, newImage]);
-    
-    // Remove image after 5 seconds
-    const timerId = setTimeout(() => {
-      setSpawnedImages(prev => prev.filter(img => img.id !== newImage.id));
-      delete timersRef.current[newImage.id];
-    }, 5000);
-
-    // Store the timer ID to be cleaned up on unmount
-    timersRef.current[newImage.id] = timerId as unknown as number;
   };
 
   return (
@@ -88,12 +69,12 @@ const InteractiveHero: React.FC = () => {
           className="mb-8"
         >
           <InteractiveText 
-            text="CREATIVE MAGIC" 
+            text="CORNERSTONE ETHMIA" 
             className="text-6xl md:text-8xl lg:text-9xl font-bold mb-4"
           />
           <InteractiveText 
-            text="UNLEASHED" 
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8"
+            text="INVESTMENT HOLDING" 
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8"
           />
         </motion.div>
         
@@ -101,9 +82,11 @@ const InteractiveHero: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
+          className="text-xl md:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed"
         >
-          Hover over letters to see the magic unfold. Click anywhere to spawn beautiful images from around the world.
+          Strategic Investment & Management Excellence across Commercial Enterprises, Agriculture, Oil & Gas, and Management Consultancy. 
+          <br />
+          <span className="text-blue-900 font-semibold">Click anywhere to explore our global network!</span>
         </motion.p>
         
         <motion.div
@@ -112,24 +95,57 @@ const InteractiveHero: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-full text-white font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-            Start Exploring
+          <button className="px-8 py-4 bg-gradient-to-r from-blue-900 to-green-700 hover:from-blue-800 hover:to-green-600 rounded-full text-white font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+            Explore Our Services
           </button>
-          <button className="px-8 py-4 border-2 border-white/30 hover:border-white/60 rounded-full text-white font-semibold text-lg transition-all duration-300 transform hover:scale-105 backdrop-blur-sm">
-            Learn More
+          <button className="px-8 py-4 border-2 border-blue-900/30 hover:border-blue-900/60 rounded-full text-blue-900 font-semibold text-lg transition-all duration-300 transform hover:scale-105 backdrop-blur-sm">
+            Contact Us Today
           </button>
         </motion.div>
+
+        {/* Clear button when images are present */}
+        {spawnedImages.length > 0 && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            onClick={(e) => {
+              e.stopPropagation();
+              setSpawnedImages([]);
+            }}
+            className="mt-8 px-6 py-3 border-2 border-gray-800 hover:bg-gray-800 hover:text-white rounded-full font-semibold transition-all duration-300"
+          >
+            Clear Images ({spawnedImages.length})
+          </motion.button>
+        )}
       </div>
       
       {/* Spawned images */}
       <AnimatePresence>
         {spawnedImages.map((image) => (
-          <ImageSpawner 
+          <motion.img
             key={image.id}
-            x={image.x}
-            y={image.y}
             src={image.src}
-            rotation={image.rotation}
+            className="absolute rounded-lg shadow-2xl pointer-events-none"
+            style={{
+              left: image.x,
+              top: image.y,
+              width: 150,
+              height: 150,
+              transform: `rotate(${image.rotation}deg)`,
+              objectFit: 'cover'
+            }}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ 
+              opacity: 0, 
+              scale: 0,
+              transition: { duration: 0.5 }
+            }}
+            transition={{ 
+              type: 'spring', 
+              stiffness: 400, 
+              damping: 25 
+            }}
           />
         ))}
       </AnimatePresence>
@@ -141,11 +157,12 @@ const InteractiveHero: React.FC = () => {
         transition={{ delay: 1.5, duration: 0.8 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center"
       >
-        <p className="text-gray-400 text-sm mb-2">Hover over letters • Click anywhere to spawn images</p>
+        <p className="text-gray-600 text-sm mb-2">Hover over letters for interactive text • Click anywhere to spawn global imagery</p>
         <div className="flex items-center justify-center space-x-4 text-gray-500 text-xs">
-          <span>✨ Interactive Text</span>
-          <span>🖼️ Random Images</span>
-          <span>🎨 Creative Magic</span>
+          <span>🏢 Commercial</span>
+          <span>🌱 Agriculture</span>
+          <span>⚡ Energy</span>
+          <span>📈 Investment</span>
         </div>
       </motion.div>
     </div>

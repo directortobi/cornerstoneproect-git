@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
-type Page = 'home' | 'about' | 'services' | 'contact';
+type Page = 'home' | 'about' | 'services' | 'portfolio' | 'contact';
 
 interface NavigationProps {
   currentPage: Page;
@@ -16,6 +16,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
     { id: 'home' as Page, label: 'Home' },
     { id: 'about' as Page, label: 'About Us' },
     { id: 'services' as Page, label: 'Services' },
+    { id: 'portfolio' as Page, label: 'Portfolio' },
     { id: 'contact' as Page, label: 'Contact' },
   ];
 

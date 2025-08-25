@@ -1,204 +1,146 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Building2, 
-  Wheat, 
-  Fuel, 
-  Handshake, 
-  TrendingUp, 
-  ArrowRight,
-  CheckCircle 
+import {
+  Building2,
+  Leaf,
+  Flame,
+  Briefcase,
+  LineChart,
 } from 'lucide-react';
 
 const ServicesPage: React.FC = () => {
   const services = [
     {
+      id: "SECT-001",
+      code: "INV-CEI",
+      type: "Sector",
       icon: Building2,
-      title: 'Investment in Commercial Enterprises & Management',
-      description: 'Strategic capital deployment and operational management for commercial businesses across diverse sectors.',
-      features: [
-        'Growth capital investment',
-        'Operational management oversight',
-        'Strategic business planning',
-        'Market expansion strategies'
-      ],
-      image: 'https://images.unsplash.com/photo-1560472355-109703aa3edc?w=500&h=300&fit=crop'
+      title: "Commercial Enterprises Investment, Institution and Management",
+      description: `
+        We invest in and manage commercial projects across a diverse range of industries, 
+        including transportation, contracting, and finance. Our approach focuses on building 
+        robust businesses from the ground up or providing the strategic financial backing 
+        they need to scale. We don't just invest; we partner, offering hands-on management 
+        and institutional support to ensure long-term success.
+      `,
+      color: "bg-blue-100 text-blue-900"
     },
     {
-      icon: Wheat,
-      title: 'Investment in Agricultural Enterprises & Management',
-      description: 'Comprehensive agricultural investment solutions focused on sustainable farming and food security initiatives.',
-      features: [
-        'Sustainable farming projects',
-        'Agricultural technology integration',
-        'Supply chain optimization',
-        'Food security initiatives'
-      ],
-      image: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=500&h=300&fit=crop'
+      id: "SECT-002",
+      code: "INV-AGRI",
+      type: "Sector",
+      icon: Leaf,
+      title: "Agricultural Enterprises Investment, Institution and Management",
+      description: `
+        Recognizing the vital role of sustainable resources, we provide the financial investment 
+        and management expertise required for agricultural projects. This includes everything 
+        from land reclamation and large-scale farming to livestock, poultry breeding, and the 
+        responsible exploitation of marine resources. Our goal is to foster a more secure and 
+        efficient global food ecosystem.
+      `,
+      color: "bg-green-100 text-green-900"
     },
     {
-      icon: Fuel,
-      title: 'Investment in Oil & Natural Gas Projects',
-      description: 'Strategic investments in energy sector projects with focus on sustainable extraction and energy independence.',
-      features: [
-        'Energy project development',
-        'Sustainable extraction methods',
-        'Infrastructure development',
-        'Energy independence solutions'
-      ],
-      image: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=500&h=300&fit=crop'
+      id: "SECT-003",
+      code: "INV-OIL",
+      type: "Sector",
+      icon: Flame,
+      title: "Investment in Oil & Natural Gas Projects",
+      description: `
+        We engage in the investment and management of oil and natural gas projects, 
+        focusing on establishing and overseeing subsidiaries that carry out operational 
+        control and management of related units. Our portfolio includes strategic ventures 
+        that contribute to the global energy landscape while adhering to best practices in 
+        operational efficiency and governance.
+      `,
+      color: "bg-yellow-100 text-yellow-900"
     },
     {
-      icon: Handshake,
-      title: 'Commercial Brokers',
-      description: 'Professional brokerage services connecting investors with high-value commercial opportunities.',
-      features: [
-        'Deal sourcing and structuring',
-        'Due diligence support',
-        'Transaction facilitation',
-        'Market intelligence'
-      ],
-      image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=500&h=300&fit=crop'
+      id: "SECT-004",
+      code: "BROKER",
+      type: "Service",
+      icon: Briefcase,
+      title: "Commercial Brokers",
+      description: `
+        Our role as commercial brokers involves acting as a trusted negotiator and mediator 
+        in commercial operations. We expertly bridge the gap between parties, facilitating 
+        sales and purchase contracts in exchange for a commission or fee. Our deep market 
+        knowledge and extensive network ensure seamless and successful transactions for our clients.
+      `,
+      color: "bg-purple-100 text-purple-900"
     },
     {
-      icon: TrendingUp,
-      title: 'Management Consultancies',
-      description: 'Expert advisory services to optimize business performance and strategic decision-making.',
-      features: [
-        'Strategic planning consulting',
-        'Operational efficiency improvement',
-        'Financial optimization',
-        'Risk management advisory'
-      ],
-      image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=500&h=300&fit=crop'
-    }
+      id: "SECT-005",
+      code: "CONSULT",
+      type: "Service",
+      icon: LineChart,
+      title: "Management Consultancies",
+      description: `
+        We provide comprehensive administrative consultancies and studies to help organizations 
+        optimize their performance. This includes everything from procedural engineering and 
+        internal policy formulation to organizational restructuring and the development of 
+        strategic plans. Our guidance empowers businesses to overcome challenges, innovate 
+        work procedures, and achieve their full potential.
+      `,
+      color: "bg-red-100 text-red-900"
+    },
   ];
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-900 to-green-800 text-white py-20 md:py-32">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <motion.h1 
-              className="text-4xl md:text-6xl font-bold mb-6"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              Our <span className="text-green-400">Services</span>
-            </motion.h1>
-            <motion.p 
-              className="text-lg md:text-xl lg:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed text-blue-100"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Comprehensive investment and management solutions across key economic sectors
-            </motion.p>
-            <motion.div 
-              className="w-24 h-1 bg-green-400 mx-auto"
-              initial={{ width: 0 }}
-              animate={{ width: 96 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            />
-          </div>
-        </div>
-        <div className="absolute inset-0 -z-10">
-          <img 
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop" 
-            alt="Business services overview" 
-            className="w-full h-full object-cover opacity-30"
-          />
+    <div className="min-h-screen bg-white">
+      {/* Header Section */}
+      <section className="bg-gradient-to-r from-blue-900 to-green-700 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Investment Sectors</h1>
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+              At CEI Holding, we strategically deploy capital into key sectors that drive global economic 
+              progress and offer significant growth potential. Our expertise allows us to identify and 
+              cultivate opportunities that create lasting value for our partners and the communities they serve.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-20">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
-                }`}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                  <div className="flex items-center mb-6">
-                    <div className="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mr-4">
-                      <service.icon className="text-blue-900" size={32} />
-                    </div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-blue-900">
-                      {service.title}
-                    </h2>
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-10 md:grid-cols-2">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="bg-white rounded-xl shadow-lg p-8 border border-gray-100"
+            >
+              <div className="flex items-start space-x-6">
+                <div className={`inline-flex p-4 rounded-lg ${service.color} flex-shrink-0`}>
+                  <service.icon className="h-10 w-10" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center space-x-4 mb-4">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                      {service.id}
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
+                      {service.code}
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                      {service.type}
+                    </span>
                   </div>
-                  
-                  <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+                  <h3 className="text-2xl font-bold text-blue-900 mb-4">{service.title}</h3>
+                  <p className="text-gray-700 leading-relaxed whitespace-pre-line">
                     {service.description}
                   </p>
-                  
-                  <div className="space-y-3 mb-8">
-                    {service.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center">
-                        <CheckCircle className="text-green-600 mr-3" size={20} />
-                        <span className="text-gray-700">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <button className="inline-flex items-center px-6 py-3 bg-blue-900 hover:bg-blue-800 
-                                   text-white font-semibold rounded-lg transition-all duration-300 
-                                   transform hover:scale-105">
-                    Learn More
-                    <ArrowRight className="ml-2" size={18} />
-                  </button>
                 </div>
-                
-                <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
-                  <div className="relative">
-                    <img 
-                      src={service.image} 
-                      alt={service.title}
-                      className="rounded-lg shadow-xl w-full"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/20 to-green-600/20 rounded-lg"></div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Ready to Partner with Us?
-            </h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Let's discuss how our comprehensive services can help you achieve 
-              your investment and management goals.
-            </p>
-            <button className="inline-flex items-center px-8 py-4 bg-green-600 hover:bg-green-700 
-                             text-white font-semibold rounded-lg text-lg transition-all duration-300 
-                             transform hover:scale-105 shadow-lg hover:shadow-xl">
-              Contact Us Today
-              <ArrowRight className="ml-2" size={20} />
-            </button>
-          </motion.div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
     </div>

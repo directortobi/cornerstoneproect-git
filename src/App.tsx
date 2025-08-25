@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Navigation from './components/Navigation';
+// import BlobCursor from './components/BlobCursor'; // Commenting out to fix timer issue
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
+import PortfolioPage from './pages/PortfolioPage';
 
-type Page = 'home' | 'about' | 'services' | 'contact';
+type Page = 'home' | 'about' | 'services' | 'portfolio' | 'contact';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -19,6 +21,8 @@ function App() {
         return <AboutPage />;
       case 'services':
         return <ServicesPage />;
+      case 'portfolio':
+        return <PortfolioPage />;
       case 'contact':
         return <ContactPage />;
       default:
@@ -28,6 +32,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* <BlobCursor /> */} {/* Disabling BlobCursor to prevent environment-specific timer crashes */}
       <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <motion.main
         key={currentPage}

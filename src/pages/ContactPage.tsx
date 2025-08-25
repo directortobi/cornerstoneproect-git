@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Mail, 
@@ -18,17 +18,7 @@ const ContactPage: React.FC = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  useEffect(() => {
-    if (isSubmitted) {
-      const timer = setTimeout(() => {
-        setIsSubmitted(false);
-      }, 3000);
-
-      // Cleanup function to clear the timer if the component unmounts
-      return () => clearTimeout(timer);
-    }
-  }, [isSubmitted]);
+  const timeoutRef = useRef<number | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -41,7 +31,28 @@ const ContactPage: React.FC = () => {
     e.preventDefault();
     // Handle form submission logic here
     setIsSubmitted(true);
+    
+    // Reset form after 3 seconds
+    timeoutRef.current = window.setTimeout(() => {
+      setIsSubmitted(false);
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        service: '',
+        message: ''
+      });
+    }, 3000);
   };
+
+  // Cleanup timeout on component unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   const contactInfo = [
     {
@@ -53,20 +64,20 @@ const ContactPage: React.FC = () => {
     {
       icon: Phone,
       title: 'Phone',
-      content: '+1 (555) 123-4567',
+      content: '+971 (0) 4 123-4567',
       description: 'Call us during business hours'
     },
     {
       icon: MapPin,
       title: 'Office',
-      content: '123 Investment Plaza, Suite 400',
-      description: 'New York, NY 10001'
+      content: 'Dubai Integrated Economic Zones',
+      description: 'Dubai, United Arab Emirates'
     },
     {
       icon: Clock,
       title: 'Business Hours',
-      content: 'Mon - Fri: 9:00 AM - 6:00 PM',
-      description: 'EST (Eastern Standard Time)'
+      content: 'Sun - Thu: 9:00 AM - 6:00 PM',
+      description: 'GST (Gulf Standard Time)'
     }
   ];
 
@@ -308,10 +319,10 @@ const ContactPage: React.FC = () => {
               <div className="text-center">
                 <MapPin className="text-blue-900 mx-auto mb-4" size={48} />
                 <p className="text-lg font-semibold text-blue-900 mb-2">
-                  123 Investment Plaza, Suite 400
+                  Dubai Integrated Economic Zones
                 </p>
                 <p className="text-gray-600">
-                  New York, NY 10001
+                  Dubai, United Arab Emirates
                 </p>
               </div>
             </div>
