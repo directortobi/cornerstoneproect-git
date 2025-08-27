@@ -1,14 +1,9 @@
 import InteractiveHero from '../components/InteractiveHero';
 import { motion } from 'framer-motion';
-import { Building2, Leaf, Zap, Globe } from 'lucide-react';
+import { Leaf, Zap, Globe } from 'lucide-react';
 
 const HomePage: React.FC<{setCurrentPage: (page: 'contact' | 'services') => void}> = ({ setCurrentPage }) => {
   const services = [
-    {
-      icon: Building2,
-      title: "Commercial Enterprises",
-      description: "Investment and management in transportation, contracting, finance, and diverse commercial activities.",
-    },
     {
       icon: Leaf,
       title: "Agricultural Ventures",
@@ -43,16 +38,16 @@ const HomePage: React.FC<{setCurrentPage: (page: 'contact' | 'services') => void
               Our Investment Focus
             </h2>
             <p className="text-lg text-text-secondary max-w-3xl mx-auto">
-              Licensed activities spanning commercial enterprises, agriculture, energy, 
+              Licensed activities spanning agriculture, energy, 
               and strategic commercial brokerage.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                className="bg-primary p-8 rounded-lg border border-border hover:border-accent transition-all duration-300 shadow-sm hover:shadow-lg"
+                className="bg-primary p-8 rounded-lg border border-border hover:border-emerald transition-all duration-300 shadow-sm hover:shadow-lg"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -87,7 +82,7 @@ const HomePage: React.FC<{setCurrentPage: (page: 'contact' | 'services') => void
             </h2>
             <p className="text-lg text-text-secondary max-w-4xl mx-auto mb-8">
               Founded on principles of trust, transparency, and performance, 
-              CIE Holding stands as a reliable partner 
+              CEI Holding stands as a reliable partner 
               for investors, stakeholders, and industry leaders seeking 
               sustainable returns and responsible growth.
             </p>

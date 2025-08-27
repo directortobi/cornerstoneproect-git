@@ -10,7 +10,7 @@ const InteractiveHero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          CORNERSTONE ETHMAN INVESTMENT HOLDING
+          CORNERSTONE ETHMAN INVESTMENTS
         </motion.h1>
         <motion.p
           className="mt-6 text-lg md:text-xl font-light text-accent"

@@ -23,8 +23,8 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3">
-              <img src="https://i.ibb.co/9gX4g2C/cie-logo.png" alt="CIE Holding Logo" className="h-10 w-auto" />
-              <span className="text-xl font-bold text-brand tracking-wider">CIE Holding</span>
+              <img src="https://i.ibb.co/9gX4g2C/cie-logo.png" alt="CEI Holding Logo" className="h-10 w-auto" />
+              <span className="text-xl font-bold text-brand tracking-wider">CEI Holding</span>
             </div>
             <p className="text-sm mt-4">
               Driving profitable and purposeful investments across key global sectors.
@@ -68,7 +68,7 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-border text-center text-xs">
-          <p>&copy; {new Date().getFullYear()} CIE Holding. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} CEI Holding. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

@@ -3,14 +3,6 @@ import { motion } from 'framer-motion';
 const ServicesPage: React.FC = () => {
   const services = [
     {
-      id: "SECT-001",
-      code: "INV-CEI",
-      type: "Sector",
-      title: "Commercial Enterprises Investment, Institution and Management",
-      imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
-      description: `We invest in and manage commercial projects across a diverse range of industries, including transportation, contracting, and finance. Our approach focuses on building robust businesses from the ground up or providing the strategic financial backing they need to scale. We don't just invest; we partner, offering hands-on management and institutional support to ensure long-term success.`,
-    },
-    {
       id: "SECT-002",
       code: "INV-AGRI",
       type: "Sector",
@@ -92,7 +84,7 @@ const ServicesPage: React.FC = () => {
                   <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-secondary text-text-secondary">
                     {service.code}
                   </span>
-                  <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${service.type === 'Sector' ? 'bg-brand/20 text-brand' : 'bg-accent/20 text-accent-hover'}`}>
+                  <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${service.type === 'Sector' ? 'bg-brand/20 text-brand' : 'bg-emerald/20 text-emerald-dark'}`}>
                     {service.type}
                   </span>
                 </div>

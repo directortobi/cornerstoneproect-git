@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import Navigation from './components/Navigation';
 import HomePage from './pages/HomePage';
@@ -33,15 +33,21 @@ function App() {
   return (
     <div className="min-h-screen bg-background text-text-primary">
       <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      <motion.main
-        key={currentPage}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        {renderPage()}
-      </motion.main>
+      <Suspense fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-brand"></div>
+        </div>
+      }>
+        <motion.main
+          key={currentPage}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {renderPage()}
+        </motion.main>
+      </Suspense>
       <Footer setCurrentPage={setCurrentPage} />
     </div>
   );

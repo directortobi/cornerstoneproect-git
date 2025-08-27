@@ -38,77 +38,120 @@ const BlobCursor: React.FC<BlobCursorProps> = ({
   const cursorRef = useRef<HTMLDivElement>(null);
   const blobsRef = useRef<HTMLDivElement[]>([]);
   const mousePos = useRef({ x: 0, y: 0 });
+  const animationFrameRef = useRef<number>();
 
   useEffect(() => {
     const cursor = cursorRef.current;
     if (!cursor) return;
 
     const blobs = blobsRef.current;
+    let isDestroyed = false;
     
     const handleMouseMove = (e: MouseEvent) => {
+      if (isDestroyed) return;
+      
       mousePos.current.x = e.clientX;
       mousePos.current.y = e.clientY;
 
-      // Move main blob (first one) instantly to exact cursor position
-      if (blobs[0]) {
-        gsap.set(blobs[0], {
-          x: e.clientX,
-          y: e.clientY,
-        });
+      // Use requestAnimationFrame for better performance
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
       }
-
-      // Trail blobs follow with smooth delay
-      blobs.slice(1).forEach((blob, index) => {
-        const trailIndex = index + 1;
-        const delay = trailIndex * 0.08;
-        const speed = 0.2 + (trailIndex * 0.1);
+      
+      animationFrameRef.current = requestAnimationFrame(() => {
+        if (isDestroyed) return;
         
-        gsap.to(blob, {
-          x: e.clientX,
-          y: e.clientY,
-          duration: speed,
-          ease: "power2.out",
-          delay: delay
+        // Move main blob (first one) instantly to exact cursor position
+        if (blobs[0]) {
+          gsap.set(blobs[0], {
+            x: e.clientX,
+            y: e.clientY,
+          });
+        }
+
+        // Trail blobs follow with smooth delay
+        blobs.slice(1).forEach((blob, index) => {
+          if (isDestroyed) return;
+          
+          const trailIndex = index + 1;
+          const delay = trailIndex * 0.08;
+          const speed = 0.2 + (trailIndex * 0.1);
+          
+          gsap.to(blob, {
+            x: e.clientX,
+            y: e.clientY,
+            duration: speed,
+            ease: "power2.out",
+            delay: delay,
+            overwrite: true
+          });
         });
       });
     };
 
     const handleMouseDown = () => {
+      if (isDestroyed) return;
+      
       blobs.forEach((blob) => {
-        gsap.to(blob, { 
-          scale: 0.7, 
-          duration: 0.15,
-          ease: "power2.out"
-        });
+        if (blob) {
+          gsap.to(blob, { 
+            scale: 0.7, 
+            duration: 0.15,
+            ease: "power2.out",
+            overwrite: true
+          });
+        }
       });
     };
 
     const handleMouseUp = () => {
+      if (isDestroyed) return;
+      
       blobs.forEach((blob) => {
-        gsap.to(blob, { 
-          scale: 1, 
-          duration: 0.4,
-          ease: "elastic.out(1, 0.3)"
-        });
+        if (blob) {
+          gsap.to(blob, { 
+            scale: 1, 
+            duration: 0.4,
+            ease: "elastic.out(1, 0.3)",
+            overwrite: true
+          });
+        }
       });
     };
 
-    // Set initial position for all blobs
-    gsap.set(blobs, { 
-      xPercent: -50, 
-      yPercent: -50,
-      x: window.innerWidth / 2,
-      y: window.innerHeight / 2
-    });
+    // Set initial position for all blobs with error handling
+    try {
+      gsap.set(blobs.filter(Boolean), { 
+        xPercent: -50, 
+        yPercent: -50,
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2
+      });
+    } catch (error) {
+      console.warn('GSAP initialization error:', error);
+    }
 
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mousedown', handleMouseDown);
-    document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('mousemove', handleMouseMove, { passive: true });
+    document.addEventListener('mousedown', handleMouseDown, { passive: true });
+    document.addEventListener('mouseup', handleMouseUp, { passive: true });
 
     return () => {
+      isDestroyed = true;
+      
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mouseup', handleMouseUp);
+      
+      // Kill all GSAP animations for these elements
+      blobs.forEach(blob => {
+        if (blob) {
+          gsap.killTweensOf(blob);
+        }
+      });
     };
   }, []);
 

@@ -44,8 +44,8 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
             whileHover={{ scale: 1.05 }}
           >
             <div className="flex items-center space-x-3">
-              <img src="https://i.ibb.co/9gX4g2C/cie-logo.png" alt="CIE Holding Logo" className="h-10 w-auto" />
-              <span className="text-xl font-bold text-brand tracking-wider">CIE Holding</span>
+              <img src="https://i.ibb.co/9gX4g2C/cie-logo.png" alt="CEI Holding Logo" className="h-10 w-auto" />
+              <span className="text-xl font-bold text-brand tracking-wider">CEI Holding</span>
             </div>
           </motion.div>
 

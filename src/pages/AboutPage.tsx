@@ -15,7 +15,7 @@ const AboutPage: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-5xl font-bold mb-4 text-brand"
           >
-            About <span className="text-accent">CIE Holding</span>
+            About <span className="text-accent">CEI Holding</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -39,7 +39,7 @@ const AboutPage: React.FC = () => {
             className="prose prose-lg max-w-none text-text-secondary space-y-6 prose-strong:text-text-primary prose-headings:text-brand"
           >
             <p>
-              Cornerstone Ethman Investment Holding (CIE Holding) is a visionary
+              Cornerstone Ethman Investments (CEI Holding) is a visionary
               investment firm, headquartered in GCC with a global mandate.
               Operating as a Limited Liability Company (LLC) within the dynamic
               framework of the Dubai Integrated Economic Zones, we are perfectly
@@ -50,10 +50,10 @@ const AboutPage: React.FC = () => {
               Our mission is to partner with and empower the next generation of
               industry leaders. We achieve this by providing strategic capital
               and expert guidance to high-potential ventures across a diverse
-              range of sectors, including commercial enterprises, agriculture,
-              and energy. We also leverage our expertise in management
-              consultancies and commercial brokerage to provide comprehensive
-              support and maximize value for our portfolio companies.
+              range of sectors, including agriculture, and energy. We also 
+              leverage our expertise in management consultancies and commercial 
+              brokerage to provide comprehensive support and maximize value for 
+              our portfolio companies.
             </p>
 
             <p>
@@ -125,7 +125,7 @@ const AboutPage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-lg text-center border border-border hover:border-accent hover:shadow-xl transition-all"
+                className="bg-white p-6 rounded-lg text-center border border-border hover:border-emerald hover:shadow-xl transition-all"
               >
                 <div className="inline-flex p-4 bg-secondary rounded-full mb-4">
                   <feature.icon className="h-8 w-8 text-brand" />
