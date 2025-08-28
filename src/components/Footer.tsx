@@ -22,12 +22,7 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-3">
-              <img 
-                src="https://i.ibb.co/pXhXDM0/cei-logo-3d.png" 
-                alt="CEI Holding Logo" 
-                className="h-10 w-auto" 
-              />
+            <div className="flex items-center">
               <span className="text-xl font-bold text-brand tracking-wider">CEI Holding</span>
             </div>
             <p className="text-sm mt-4">

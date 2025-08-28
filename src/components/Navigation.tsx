@@ -37,18 +37,13 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo */}
+          {/* Brand Name */}
           <motion.div 
             className="flex-shrink-0 cursor-pointer"
             onClick={() => setCurrentPage('home')}
             whileHover={{ scale: 1.05 }}
           >
-            <div className="flex items-center space-x-3">
-              <img 
-                src="https://i.ibb.co/pXhXDM0/cei-logo-3d.png" 
-                alt="CEI Holding Logo" 
-                className="h-12 w-auto"
-              />
+            <div className="flex items-center">
               <span className="text-xl font-bold text-brand tracking-wider">CEI Holding</span>
             </div>
           </motion.div>
@@ -104,29 +99,10 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
                 </motion.div>
               )}
             </div>
-
-            {/* Top Right Corner Logo */}
-            <motion.div 
-              className="ml-4"
-              whileHover={{ scale: 1.1 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <img 
-                src="https://i.ibb.co/pXhXDM0/cei-logo-3d.png" 
-                alt="CEI Corner Logo" 
-                className="h-10 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
-              />
-            </motion.div>
           </div>
 
-          {/* Mobile menu button with corner logo */}
-          <div className="md:hidden flex items-center space-x-3">
-            {/* Corner logo for mobile */}
-            <img 
-              src="https://i.ibb.co/pXhXDM0/cei-logo-3d.png" 
-              alt="CEI Corner Logo" 
-              className="h-8 w-auto opacity-80"
-            />
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-text-secondary hover:text-brand p-2"
