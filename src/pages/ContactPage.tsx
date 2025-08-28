@@ -6,7 +6,7 @@ const ContactPage: React.FC = () => {
     { 
       icon: Mail, 
       title: 'Email', 
-      content: 'info@cornerstoneethmia.com', 
+      content: 'info.ceiholding@gmail.com', 
       description: 'Send us an email anytime' 
     },
     { 
@@ -37,14 +37,21 @@ const ContactPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header Section */}
-      <section className="relative bg-primary py-32 sm:py-40 text-center">
+      {/* Header Section with Dubai background */}
+      <section 
+        className="relative py-32 sm:py-40 text-center"
+        style={{
+          backgroundImage: `linear-gradient(rgba(42, 74, 92, 0.9), rgba(42, 74, 92, 0.9)), url('https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h1
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold mb-4 text-brand"
+            className="text-4xl md:text-5xl font-bold mb-4 text-white"
           >
             Contact <span className="text-accent">CEI Holding</span>
           </motion.h1>
@@ -52,7 +59,7 @@ const ContactPage: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-text-secondary"
+            className="text-xl text-accent"
           >
             Let's discuss your investment opportunities
           </motion.p>
@@ -91,13 +98,21 @@ const ContactPage: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary">
+      <section 
+        className="py-20"
+        style={{
+          backgroundImage: `linear-gradient(rgba(200, 164, 100, 0.1), rgba(200, 164, 100, 0.1)), url('https://images.unsplash.com/photo-1585159812596-fac104f2b069?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="bg-white/95 backdrop-blur-sm p-8 rounded-lg border border-accent/20"
           >
             <h2 className="text-3xl font-bold text-text-primary mb-6">
               Ready to Partner with Us?
@@ -107,7 +122,7 @@ const ContactPage: React.FC = () => {
               Contact us today to explore how we can work together.
             </p>
             <a 
-              href="mailto:info@cornerstoneethmia.com"
+              href="mailto:info.ceiholding@gmail.com"
               className="inline-block bg-brand text-white font-bold py-3 px-8 rounded-lg hover:bg-brand-hover transition-colors duration-300"
             >
               Send Email

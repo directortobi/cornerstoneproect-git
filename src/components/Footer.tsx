@@ -23,7 +23,11 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3">
-              <img src="https://i.ibb.co/9gX4g2C/cie-logo.png" alt="CEI Holding Logo" className="h-10 w-auto" />
+              <img 
+                src="https://i.ibb.co/pXhXDM0/cei-logo-3d.png" 
+                alt="CEI Holding Logo" 
+                className="h-10 w-auto" 
+              />
               <span className="text-xl font-bold text-brand tracking-wider">CEI Holding</span>
             </div>
             <p className="text-sm mt-4">
@@ -54,8 +58,8 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center">
                 <Mail size={16} className="mr-3 text-accent flex-shrink-0" />
-                <a href="mailto:info@cornerstoneethmia.com" className="hover:text-brand">
-                  info@cornerstoneethmia.com
+                <a href="mailto:info.ceiholding@gmail.com" className="hover:text-brand">
+                  info.ceiholding@gmail.com
                 </a>
               </li>
             </ul>

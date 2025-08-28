@@ -30,7 +30,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
 
   return (
     <motion.nav 
-      className="bg-background/80 backdrop-blur-lg sticky top-0 z-50 border-b border-border"
+      className="bg-background/90 backdrop-blur-lg sticky top-0 z-50 border-b border-border"
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -44,7 +44,11 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
             whileHover={{ scale: 1.05 }}
           >
             <div className="flex items-center space-x-3">
-              <img src="https://i.ibb.co/9gX4g2C/cie-logo.png" alt="CEI Holding Logo" className="h-10 w-auto" />
+              <img 
+                src="https://i.ibb.co/pXhXDM0/cei-logo-3d.png" 
+                alt="CEI Holding Logo" 
+                className="h-12 w-auto"
+              />
               <span className="text-xl font-bold text-brand tracking-wider">CEI Holding</span>
             </div>
           </motion.div>

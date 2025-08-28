@@ -68,7 +68,14 @@ const HomePage: React.FC<{setCurrentPage: (page: 'contact' | 'services') => void
         </div>
       </section>
 
-      <section className="py-20 bg-primary">
+      <section 
+        className="py-20"
+        style={{
+          backgroundImage: `linear-gradient(rgba(42, 74, 92, 0.95), rgba(42, 74, 92, 0.95)), url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center"
@@ -77,10 +84,10 @@ const HomePage: React.FC<{setCurrentPage: (page: 'contact' | 'services') => void
             viewport={{ once: true }}
             transition={{ duration: 1 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Driving Profitable & Purposeful Investments
             </h2>
-            <p className="text-lg text-text-secondary max-w-4xl mx-auto mb-8">
+            <p className="text-lg text-accent max-w-4xl mx-auto mb-8">
               Founded on principles of trust, transparency, and performance, 
               CEI Holding stands as a reliable partner 
               for investors, stakeholders, and industry leaders seeking 
@@ -88,7 +95,7 @@ const HomePage: React.FC<{setCurrentPage: (page: 'contact' | 'services') => void
             </p>
             <button 
               onClick={() => setCurrentPage('contact')}
-              className="bg-brand text-white font-bold py-3 px-8 rounded-lg hover:bg-brand-hover transition-colors duration-300"
+              className="bg-accent text-white font-bold py-3 px-8 rounded-lg hover:bg-accent-hover transition-colors duration-300"
             >
               Contact Us
             </button>

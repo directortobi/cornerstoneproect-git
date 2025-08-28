@@ -6,14 +6,19 @@ const AboutPage: React.FC = () => {
     <div className="min-h-screen bg-background">
       {/* Header Section */}
       <section
-        className="relative bg-primary py-32 sm:py-40 text-center"
+        className="relative py-32 sm:py-40 text-center"
+        style={{
+          backgroundImage: `linear-gradient(rgba(42, 74, 92, 0.9), rgba(42, 74, 92, 0.9)), url('https://images.unsplash.com/photo-1444723121867-7a241cacace9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
       >
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h1
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold mb-4 text-brand"
+            className="text-4xl md:text-5xl font-bold mb-4 text-white"
           >
             About <span className="text-accent">CEI Holding</span>
           </motion.h1>
@@ -21,7 +26,7 @@ const AboutPage: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-text-secondary"
+            className="text-xl text-accent"
           >
             Strategic Investment & Management Excellence
           </motion.p>
@@ -78,7 +83,14 @@ const AboutPage: React.FC = () => {
       </section>
 
       {/* Key Features */}
-      <section className="py-20 bg-primary">
+      <section 
+        className="py-20"
+        style={{
+          backgroundImage: `linear-gradient(rgba(249, 250, 251, 0.95), rgba(249, 250, 251, 0.95)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
@@ -125,7 +137,7 @@ const AboutPage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-lg text-center border border-border hover:border-emerald hover:shadow-xl transition-all"
+                className="bg-white/95 backdrop-blur-sm p-6 rounded-lg text-center border border-border hover:border-emerald hover:shadow-xl transition-all"
               >
                 <div className="inline-flex p-4 bg-secondary rounded-full mb-4">
                   <feature.icon className="h-8 w-8 text-brand" />
