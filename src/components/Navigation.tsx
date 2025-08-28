@@ -104,10 +104,29 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
                 </motion.div>
               )}
             </div>
+
+            {/* Top Right Corner Logo */}
+            <motion.div 
+              className="ml-4"
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <img 
+                src="https://i.ibb.co/pXhXDM0/cei-logo-3d.png" 
+                alt="CEI Corner Logo" 
+                className="h-10 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
+              />
+            </motion.div>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Mobile menu button with corner logo */}
+          <div className="md:hidden flex items-center space-x-3">
+            {/* Corner logo for mobile */}
+            <img 
+              src="https://i.ibb.co/pXhXDM0/cei-logo-3d.png" 
+              alt="CEI Corner Logo" 
+              className="h-8 w-auto opacity-80"
+            />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-text-secondary hover:text-brand p-2"
